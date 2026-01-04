@@ -107,4 +107,17 @@ function submitToAPI(e) {
         document.getElementById("visitor").innerHTML =  await visitorCount;
     }
            
+    function toggleChat() {
+        const chatContainer = document.getElementById("chat-container");
+        const toggleBtn = document.getElementById("chat-toggle-btn");
     
+        if (chatContainer.style.display === "none") {
+            chatContainer.style.display = "block";
+            toggleBtn.innerText = "Close"; // Change button text when open
+            toggleBtn.style.background = "#6c757d"; // Optional: change color to gray
+        } else {
+            chatContainer.style.display = "none";
+            toggleBtn.innerText = "Chat";
+            toggleBtn.style.background = "#007BFF"; // Reset to original blue
+        }
+    } 

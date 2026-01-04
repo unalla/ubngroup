@@ -166,9 +166,43 @@
             </div>
         </section>
         <!-- Portfolio-->
-        <div id="projects">
-            <div class="container-fluid p-0">
-                
+        <section class="page-section" id="projects">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">Projects & Demo</h2>
+                <hr class="divider" />
+                <div class="row gx-1 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-graph-up fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">AWS ChatBot</h3>
+                            <p class="text-muted mb-0">A chatbot that list out the AWS inventory and cost breakdown for a demo account</p>
+                            <button id="chat-toggle-btn" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; z-index: 1001; padding: 15px; border-radius: 50%; background: #007BFF; color: white; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                                Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-reception-4 fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">IOT & Automation Solutions</h3>
+                            <p class="text-muted mb-0">We have the expertise to setup and collect the data from IOT devices and help with your preventive maintenance needs by sending custom alerts and notifications.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-receipt fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Serverless Computing & Logic Apps</h3>
+                            <p class="text-muted mb-0">We can help develop serverless services for all three layers of your stack: compute, integration, and data stores.</p>
+                        </div>
+                    </div>                    
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-people fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">Cloud Training & Certification</h3>
+                            <p class="text-muted mb-0">We offer both online as well as classroom training for your employees to get certified with either Azure or AWS certifications.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Contact-->
@@ -210,6 +244,15 @@
                 </div>                
             </div>
         </section>
+        <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+            <iframe 
+                src="chat.html" 
+                width="350" 
+                height="500" 
+                style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                title="AI Chatbot">
+            </iframe>
+        </div>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
