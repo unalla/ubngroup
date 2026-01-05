@@ -3,7 +3,7 @@ const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
 // Replace with your actual API Gateway Invoke URL
-const API_URL = "YOUR_API_GATEWAY_URL";
+const API_URL = "https://8p0tjkw1m6.execute-api.us-east-1.amazonaws.com/InvokeAgent"; //"L9sjSWml2KacRnixM12jq2L5nTVueiNW4jDt0Ki8";
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
@@ -24,8 +24,8 @@ const handleChat = async () => {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ inputText: message, sessionId: "s3-user-123" })
+            headers: { "Content-Type": "application/json", "x-api-key": "L9sjSWml2KacRnixM12jq2L5nTVueiNW4jDt0Ki8" },
+            body: JSON.stringify({ inputText: message, sessionId: "user-123" })
         });
 
         const data = await response.json();

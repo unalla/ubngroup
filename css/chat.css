@@ -1,6 +1,6 @@
 body { font-family: 'Poppins', sans-serif; background: #f0f2f5; }
 .chatbot-container {
-    position: fixed; right: 20px; bottom: 20px;
+    position: fixed; right: 0px; bottom: 0px;
     width: 350px; background: #fff;
     border-radius: 15px; box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5);
 }
