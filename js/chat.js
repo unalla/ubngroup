@@ -3,7 +3,7 @@ const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
 // Replace with your actual API Gateway Invoke URL
-const API_URL = "https://8p0tjkw1m6.execute-api.us-east-1.amazonaws.com/InvokeAgent"; 
+const API_URL = "https://8p0tjkw1m6.execute-api.us-east-1.amazonaws.com/prod/InvokeAgent"; 
 
 const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
