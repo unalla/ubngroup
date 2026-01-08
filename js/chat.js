@@ -13,7 +13,7 @@ async function checkAuth() {
 
     if (code && verifier) {
         const domain = 'https://ubngroup.auth.us-east-1.amazoncognito.com';
-        const clientId = '4cmejouq9l40q5a8dfgr5ekq30';
+        const clientId = '5r813imdrcb61s8grs40elr4n9';
         const redirectUri = 'https://ubngroup.net';
 
         const response = await fetch(`${domain}/oauth2/token`, {
