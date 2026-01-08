@@ -93,6 +93,6 @@ const handleChat = async () => {
     }
     chatbox.scrollTo(0, chatbox.scrollHeight);
 };
-loginBtn.addEventListener("click", redirectToCognito);
+
 sendBtn.addEventListener("click", handleChat);
 userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") handleChat(); });

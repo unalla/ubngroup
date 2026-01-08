@@ -164,3 +164,4 @@ async function redirectToCognito() {
     // );
     window.location.assign(loginUrl);
 }
+
