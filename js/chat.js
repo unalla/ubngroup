@@ -4,48 +4,7 @@ const sendBtn = document.getElementById("sendBtn");
 const loginBtn = document.getElementById("loginBtn");
 
 
-// 1. Generate a secure random string for the code verifier
-function generateRandomString(length) {
-    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
-    const values = new Uint32Array(length);
-    crypto.getRandomValues(values);
-    return Array.from(values, (dec) => charset[dec % charset.length]).join('');
-}
 
-// 2. Hash the verifier and encode it to base64url format for Cognito
-async function generateCodeChallenge(verifier) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(verifier);
-    const hash = await crypto.subtle.digest('SHA-256', data);
-    return btoa(String.fromCharCode(...new Uint8Array(hash)))
-        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-async function redirectToCognito() {
-    // Replace with your values from the Cognito console
-    const domain = 'https://ubngroup.auth.us-east-1.amazoncognito.com';
-    const clientId = '4cmejouq9l40q5a8dfgr5ekq30';
-    const redirectUri = 'https://ubngroup.net';
-
-    const width = 500;
-    const height = 600;
-    const left = (window.screen.width / 2) - (width / 2);
-    const top = (window.screen.height / 2) - (height / 2);
-
-    const verifier = generateRandomString(64);
-    sessionStorage.setItem('code_verifier', verifier);
-
-    const challenge = await generateCodeChallenge(verifier);
-    
-    const loginUrl = `${domain}/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${encodeURIComponent(redirectUri)}&code_challenge=${challenge}&code_challenge_method=S256`;
-
-    window.open(
-        loginUrl, 
-        'CognitoLogin', 
-        `width=${width},height=${height},top=${top},left=${left},toolbar=no,menubar=no`
-    );
-    //window.location.assign(loginUrl);
-}
 
 async function checkAuth() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -84,7 +43,11 @@ async function checkAuth() {
 
 async function generateSessionId()
 {
-    sessionStorage.setItem('sessionId', "user-"+generateRandomString(8));
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+    const values = new Uint32Array(8);
+    crypto.getRandomValues(values);
+    var randomValue = Array.from(values, (dec) => charset[dec % charset.length]).join('');     
+    sessionStorage.setItem('sessionId', "user-"+randomValue);
 }
 
 // Run on page load
