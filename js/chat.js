@@ -27,14 +27,24 @@ async function redirectToCognito() {
     const clientId = '4cmejouq9l40q5a8dfgr5ekq30';
     const redirectUri = 'https://ubngroup.net';
 
+    const width = 500;
+    const height = 600;
+    const left = (window.screen.width / 2) - (width / 2);
+    const top = (window.screen.height / 2) - (height / 2);
+
     const verifier = generateRandomString(64);
     sessionStorage.setItem('code_verifier', verifier);
 
     const challenge = await generateCodeChallenge(verifier);
     
     const loginUrl = `${domain}/login?client_id=${clientId}&response_type=code&scope=email+openid+phone&redirect_uri=${encodeURIComponent(redirectUri)}&code_challenge=${challenge}&code_challenge_method=S256`;
-    
-    window.location.assign(loginUrl);
+
+    window.open(
+        loginUrl, 
+        'CognitoLogin', 
+        `width=${width},height=${height},top=${top},left=${left},toolbar=no,menubar=no`
+    );
+    //window.location.assign(loginUrl);
 }
 
 async function checkAuth() {
