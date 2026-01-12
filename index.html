@@ -19,6 +19,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/chat.css" rel="stylesheet" />
     </head>
     <body id="page-top" onLoad="visitors()">
         <!-- Navigation-->
@@ -31,8 +32,7 @@
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        <li class="nav-item"><button id="loginBtn" onclick="redirectToCognito()"">Login</button></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>                        
                     </ul>
                 </div>
                 <div class="visitordiv">
@@ -245,14 +245,29 @@
                 </div>                
             </div>
         </section>
-        <div id="chat-container" style="display:none; position: fixed; bottom: 60px; right: 20px; z-index: 1000;">
-            <iframe 
+        <div id="chat-container">
+            <div class="chatbot-container">
+                <header>
+                    <h2>AI Bot</h2>           
+                    <button id="loginBtn" onclick="redirectToCognito()">Login</button>                    
+                </header>
+                <ul class="chatbox" id="chatbox">
+                    <li class="chat incoming">
+                        <p>Hi there! Please login to chat!?</p>
+                    </li>
+                </ul>
+                <div class="chat-input">
+                    <textarea id="userInput" placeholder="Type a message..." required></textarea>
+                    <button id="sendBtn">Send</button>
+                </div>
+            </div>
+            <!-- <iframe 
                 src="chat.html" 
                 width="350" 
                 height="625" 
                 style="border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
                 title="AI Chatbot">
-            </iframe>
+            </iframe> -->
         </div>
         <!-- Footer-->
         <footer class="footer py-4">
