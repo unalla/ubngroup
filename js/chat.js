@@ -15,6 +15,7 @@ async function checkAuth() {
         const domain = 'https://ubngroup.auth.us-east-1.amazoncognito.com';
         const clientId = '5r813imdrcb61s8grs40elr4n9';
         const redirectUri = 'https://ubngroup.net';
+        const scope = 'openid';
 
         const response = await fetch(`${domain}/oauth2/token`, {
             method: 'POST',
@@ -23,6 +24,7 @@ async function checkAuth() {
                 grant_type: 'authorization_code',
                 client_id: clientId,
                 code: code,
+                scope: scope,
                 redirect_uri: redirectUri,
                 code_verifier: verifier
             })
@@ -30,6 +32,7 @@ async function checkAuth() {
 
         const tokens = await response.json();
         console.log("Authenticated! ID Token:", tokens.id_token);
+        console.log("Authenticated! Access Token:", tokens.access_token);
         
         // Clean up URL and storage
         sessionStorage.removeItem('code_verifier');
@@ -37,6 +40,8 @@ async function checkAuth() {
         
         // You can now use tokens.id_token to authorize your chatbot requests
         sessionStorage.setItem('id_token', tokens.id_token);
+        sessionStorage.setItem('access_token', tokens.access_token);
+        btnLogin.innerText = "Logout";
         console.log("Authentication successful!");
     }
 }
@@ -66,6 +71,7 @@ const createChatLi = (message, className) => {
 
 const handleChat = async () => {
     const message = userInput.value.trim();
+    const clientId = "5r813imdrcb61s8grs40elr4n9";
     if (!message) return;
 
     // Append user message
@@ -78,9 +84,9 @@ const handleChat = async () => {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",
-                "Authorization": "Bearer " + sessionStorage.getItem('id_token') 
+                "Authorization": "Bearer " + sessionStorage.getItem('access_token') 
              },
-            body: JSON.stringify({ inputText: message, sessionId: sessionStorage.getItem('sessionId') })
+            body: JSON.stringify({ client_id: clientId, inputText: message, sessionId: sessionStorage.getItem('sessionId') })
         });
 
         const data = await response.json();
