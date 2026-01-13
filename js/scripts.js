@@ -140,7 +140,7 @@ async function generateCodeChallenge(verifier) {
 }
 
 async function redirectToCognito() {
-    if ( btnLogin.innerText === "Login") {
+    if ( loginBtn.innerText === "Login") {
         // Replace with your values from the Cognito console
         const domain = 'https://ubngroup.auth.us-east-1.amazoncognito.com';
         const clientId = '5r813imdrcb61s8grs40elr4n9';
@@ -153,7 +153,7 @@ async function redirectToCognito() {
     } else {
         sessionStorage.removeItem('id_token');
         sessionStorage.removeItem('access_token');
-        btnLogin.innerText = "Login";
+        loginBtn.innerText = "Login";
         toggleChat();
     }
 }

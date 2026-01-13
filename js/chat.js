@@ -41,7 +41,7 @@ async function checkAuth() {
         // You can now use tokens.id_token to authorize your chatbot requests
         sessionStorage.setItem('id_token', tokens.id_token);
         sessionStorage.setItem('access_token', tokens.access_token);
-        btnLogin.innerText = "Logout";
+        loginBtn.innerText = "Logout";
         console.log("Authentication successful!");
     }
 }
